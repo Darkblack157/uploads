@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta property="og:url" content="https://sugoiapi.space/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sugoi API | Uploads">
+    <meta property="og:description" content="Uma rest-api para você fazer seus uploads...">
+    <meta property="og:image" content="https://i.imgur.com/rM0d5GB.jpg">
+    <link rel="shortcut icon" href="https://i.imgur.com/rM0d5GB.jpg">
+    <title>Upload de Arquivos - By: Sugoi API</title>
+    <audio id="backgroundAudio" hidden>
+        <source src="https://files.catbox.moe/9m50uh.mp3" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+    <video autoplay muted loop id="background-video">
+        <source src="https://i.imgur.com/lAoaos0.mp4" type="video/mp4">
+        Seu navegador não suporta vídeo.
+    </video>
+    <link rel="stylesheet" href="styles.css">
+    <div id="background-overlay"></div>
+</head>
+<body>
+
+    <div class="container">
+        <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+            <div class="upload-box"> 
+                <label for="fileInput" class="upload-label">
+                    <div class="upload-box"> 
+                        <label for="fileInput" class="upload-label" style="display: flex; align-items: center;">
+                            <div class="icon" style="margin-right: 10px;">
+                                <svg viewBox="0 0 24 24" fill="" xmlns="http://www.w3.org/2000/svg" style="width: 50px; height: 50px;">
+                                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                                    <g id="SVGRepo_iconCarrier">
+                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10 1C9.73478 1 9.48043 1.10536 9.29289 1.29289L3.29289 7.29289C3.10536 7.48043 3 7.73478 3 8V20C3 21.6569 4.34315 23 6 23H7C7.55228 23 8 22.5523 8 22C8 21.4477 7.55228 21 7 21H6C5.44772 21 5 20.5523 5 20V9H10C10.5523 9 11 8.55228 11 8V3H18C18.5523 3 19 3.44772 19 4V9C19 9.55228 19.4477 10 20 10C20.5523 10 21 9.55228 21 9V4C21 2.34315 19.6569 1 18 1H10ZM9 7H6.41421L9 4.41421V7ZM14 15.5C14 14.1193 15.1193 13 16.5 13C17.8807 13 19 14.1193 19 15.5V16V17H20C21.1046 17 22 17.8954 22 19C22 20.1046 21.1046 21 20 21H13C11.8954 21 11 20.1046 11 19C11 17.8954 11.8954 17 13 17H14V16V15.5ZM16.5 11C14.142 11 12.2076 12.8136 12.0156 15.122C10.2825 15.5606 9 17.1305 9 19C9 21.2091 10.7909 23 13 23H20C22.2091 23 24 21.2091 24 19C24 17.1305 22.7175 15.5606 20.9844 15.122C20.7924 12.8136 18.858 11 16.5 11Z" fill=""></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            <span>Selecionar Arquivo</span>
+                        </label>
+                    </div>
+                    <input type="file" id="fileInput" name="file" class="upload-input" required>
+                    <button type="submit" class="upload-button">Fazer Upload</button>
+                    <div id="loadingSpinner" class="loading-spinner">
+                        <div class="spinner"></div>
+                        <p>Enviando arquivo, por favor aguarde...</p>
+                    </div>
+                </label>
+            </div>
+        </form>
+        <div id="result" class="response"></div>
+    </div>
+    
+    <script src="./script.js"></script>
+    <script src="./upload.js"></script>
+</body>
+
+<div class="footer">
+    <p>© Copyright to Sugoi API.</p>
+</div>
+
+</html>

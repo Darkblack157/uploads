@@ -1,0 +1,297 @@
+/* Reset e estilo geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    }
+    
+    body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Arial', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    }
+    
+    /* Vídeo de fundo e sobreposição */
+    #background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    }
+    
+    #background-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Escurece o fundo */
+    z-index: -1;
+    }
+    
+    /* Container e título */
+    .container {
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+    padding: 20px;
+    background-color: rgb(62, 180, 248); /* Rosa */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(30, 65, 219, 0); /* Efeito de glow rosa */
+    position: relative;
+    }
+    
+    .flame-title {
+    font-size: 2.5em;
+    color: #1E90FF; /* Cor inicial */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    animation: random-flame 2s infinite alternate;
+    }
+    
+    @keyframes random-flame {
+    0% { color: #FF69B4; } /* Rosa pink */
+    25% { color: #FF4500; } /* Laranja avermelhado */
+    50% { color: #FFD700; } /* Amarelo dourado */
+    75% { color: #ADFF2F; } /* Verde claro */
+    100% { color: #1E90FF; } /* Azul claro */
+    }
+    
+    /* Efeito de fogo no título */
+    @keyframes flame-flicker {
+    0% { text-shadow: 0 0 10px #1E90FF, 0 0 20px #4682B4, 0 0 30px #1E90FF; }
+    100% { text-shadow: 0 0 20px #1E90FF, 0 0 40px #4682B4, 0 0 60px #1E90FF; }
+    }
+    
+    /* Upload box e botão */
+    .upload-box {
+    position: relative;
+    }
+    
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        text-align: center; /* Centraliza o texto */
+        padding: 10px 0; /* Espaçamento em cima e embaixo */
+        color: #000; /* Cor do texto */
+        background-color: transparent; /* Fundo transparente */
+    }
+    
+    .upload-label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #FFB6C1; /* Rosa claro */
+    }
+    
+    .upload-input {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #0fcefd; /* Rosa claro */
+    border-radius: 5px;
+    background-color: #000000;
+    color: #fff;
+    font-size: 1em;
+    }
+    
+    .upload-input:hover {
+    border-color: #33ff00; /* Rosa mais escuro */
+    }
+    
+    .upload-button {
+    --border-radius: 15px;
+    --border-width: 4px;
+    appearance: none;
+    position: relative;
+    padding: 1em 2em;
+    border: 0;
+    background-color: transparent;
+    font-family: "Roboto", Arial, "Segoe UI", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    color: #fff;
+    z-index: 2;
+    margin-top: 20px;
+    }
+    
+    .upload-button::after {
+    --m-i: linear-gradient(#000, #000);
+    --m-o: content-box, padding-box;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: var(--border-width);
+    border-radius: var(--border-radius);
+    background-image: conic-gradient(
+    #ff0000,
+    #001aff
+    );
+    -webkit-mask-image: var(--m-i), var(--m-i);
+    mask-image: var(--m-i), var(--m-i);
+    -webkit-mask-origin: var(--m-o);
+    mask-origin: var(--m-o);
+    -webkit-mask-clip: var(--m-o);
+    mask-composite: exclude;
+    -webkit-mask-composite: destination-out;
+    filter: hue-rotate(0);
+    animation: rotate-hue linear 500ms infinite;
+    animation-play-state: paused;
+    }
+    
+    .upload-button:hover::after {
+    animation-play-state: running;
+    }
+    
+    .upload-button,
+    .upload-button::after {
+    box-sizing: border-box;
+    }
+    
+    .upload-button:active {
+    --border-width: 5px;
+    }
+    
+    .response {
+    margin-top: 20px;
+    font-size: 1.1em;
+    }
+    
+    .response p a {
+    color: #FFB6C1; /* Rosa claro */
+    text-decoration: underline;
+    }
+    
+    .response p a:hover {
+    color: #FF1493; /* Rosa escuro */
+    }
+    
+    /* Efeito flame na borda da caixa */
+    .container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px;
+    background: linear-gradient(45deg, transparent, #1E90FF, transparent);
+    background-size: 400% 400%;
+    animation: border-flame 2s linear infinite;
+    z-index: -1;
+    }
+    
+    @keyframes border-flame {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+    }
+    
+    /* Estilos de carregamento (spinner) */
+    .hidden { display: none; }
+    .loading-spinner {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo semi-transparente para destacar o spinner */
+    }
+    .spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid orange;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    }
+    @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+    }
+    
+    /* From Uiverse.io by csemszepp */ 
+    .custum-file-upload {
+    height: 200px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: space-between;
+    gap: 20px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #FF69B4; /* Rosa pink */
+    background-color: #212121;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0px 48px 35px -48px #FF69B4; /* Rosa pink */
+    }
+    
+    .custum-file-upload .icon svg {
+    height: 80px;
+    fill: #FF69B4; /* Rosa pink */
+    }
+    
+    .custum-file-upload .text span {
+    font-weight: 400;
+    color: #FF69B4; /* Rosa pink */
+    }
+    
+    header {
+    background-color: transparent;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    }
+    
+    header img {
+    height: 40px;
+    }
+    
+    /* Estilos do menu e container de data/hora */
+    header nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    margin: 0 5px;
+    font-weight: bold;
+    font-size: 1em; /* Tamanho da fonte para os links de navegação */
+    }
+    
+    .date-time-container {
+    font-size: 0.9em; /* Ajusta o tamanho da fonte */
+    color: #fff;
+    margin-top: 5px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* Espaço entre os itens */
+    }
+    
+    .date-time-container p {
+    margin: 0;
+    }
