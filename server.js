@@ -6,6 +6,7 @@ var cors = require("cors");
 
 var app = express();
 var port = 3000;
+var baseURL = "https://uploads-sugoiapi.onrender.com"; // Substitua pelo seu domínio
 
 app.use(cors());
 app.use(express.static("public")); // Servir arquivos estáticos da pasta public
@@ -36,7 +37,7 @@ app.post("/upload", upload.single("file"), function (req, res) {
         return res.status(400).json({ error: "Nenhum arquivo enviado." });
     }
 
-    var fileUrl = `http://localhost:${port}/uploads/${req.file.filename}`;
+    var fileUrl = `${baseURL}/uploads/${req.file.filename}`;
     res.json({
         message: "Upload realizado com sucesso!",
         fileUrl: fileUrl
