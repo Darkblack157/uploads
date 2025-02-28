@@ -5,7 +5,7 @@ var fs = require("fs");
 var cors = require("cors");
 
 var app = express();
-var port = 3000;
+var port = 4000;
 var baseURL = "https://uploads-sugoiapi.onrender.com"; // Substitua pelo seu domínio
 
 app.use(cors());
